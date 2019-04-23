@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuyu.dao.StoreMapper" >
+  <resultMap id="BaseResultMap" type="com.yuyu.pojo.Store" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="storeid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="storename" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="storetype" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="openningtime" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="introduce" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="adminid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="businessid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="open" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="license" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, storeid, storename, storetype, location, openningtime, introduce, adminid, businessid, 
+    open, create_time, update_time, license
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from storeinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from storeinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuyu.pojo.Store" >
+    insert into storeinfo (id, storeid, storename, 
+      storetype, location, openningtime, 
+      introduce, adminid, businessid, 
+      open, create_time, update_time, 
+      license)
+    values (#{id,jdbcType=INTEGER}, #{storeid,jdbcType=INTEGER}, #{storename,jdbcType=VARCHAR}, 
+      #{storetype,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{openningtime,jdbcType=VARCHAR}, 
+      #{introduce,jdbcType=VARCHAR}, #{adminid,jdbcType=INTEGER}, #{businessid,jdbcType=VARCHAR}, 
+      #{open,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{license,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuyu.pojo.Store" >
+    insert into storeinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="storeid != null" >
+        storeid,
+      </if>
+      <if test="storename != null" >
+        storename,
+      </if>
+      <if test="storetype != null" >
+        storetype,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="openningtime != null" >
+        openningtime,
+      </if>
+      <if test="introduce != null" >
+        introduce,
+      </if>
+      <if test="adminid != null" >
+        adminid,
+      </if>
+      <if test="businessid != null" >
+        businessid,
+      </if>
+      <if test="open != null" >
+        open,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="license != null" >
+        license,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="storeid != null" >
+        #{storeid,jdbcType=INTEGER},
+      </if>
+      <if test="storename != null" >
+        #{storename,jdbcType=VARCHAR},
+      </if>
+      <if test="storetype != null" >
+        #{storetype,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="openningtime != null" >
+        #{openningtime,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="adminid != null" >
+        #{adminid,jdbcType=INTEGER},
+      </if>
+      <if test="businessid != null" >
+        #{businessid,jdbcType=VARCHAR},
+      </if>
+      <if test="open != null" >
+        #{open,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="license != null" >
+        #{license,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuyu.pojo.Store" >
+    update storeinfo
+    <set >
+      <if test="storeid != null" >
+        storeid = #{storeid,jdbcType=INTEGER},
+      </if>
+      <if test="storename != null" >
+        storename = #{storename,jdbcType=VARCHAR},
+      </if>
+      <if test="storetype != null" >
+        storetype = #{storetype,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="openningtime != null" >
+        openningtime = #{openningtime,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="adminid != null" >
+        adminid = #{adminid,jdbcType=INTEGER},
+      </if>
+      <if test="businessid != null" >
+        businessid = #{businessid,jdbcType=VARCHAR},
+      </if>
+      <if test="open != null" >
+        open = #{open,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="license != null" >
+        license = #{license,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuyu.pojo.Store" >
+    update storeinfo
+    set storeid = #{storeid,jdbcType=INTEGER},
+      storename = #{storename,jdbcType=VARCHAR},
+      storetype = #{storetype,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      openningtime = #{openningtime,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      adminid = #{adminid,jdbcType=INTEGER},
+      businessid = #{businessid,jdbcType=VARCHAR},
+      open = #{open,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      license = #{license,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByAdminId" parameterType="integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from storeinfo
+    where id=#{id}
+  </select>
+  <select id="checkopen" parameterType="integer" resultType="string">
+        select open
+        from storeinfo
+        where id=#{id}
+    </select>
+  <update id="updateopen" parameterType="integer" >
+        update storeinfo
+        set open = 1
+        where id = #{id}
+    </update>
+  <update id="updateclose" parameterType="integer" >
+        update storeinfo
+        set open = 0
+        where id = #{id}
+    </update>
+  <select id="getstoreid" parameterType="string" resultType="integer">
+  select storeid
+  from storeinfo
+  where storename=#{storename}
+</select>
+  <update id="updatelicesepicture" parameterType="map">
+        update storeinfo
+        set license=#{license}
+        where storeid = #{storeid}
+  </update>
+</mapper>
